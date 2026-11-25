@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- Le dice al navegador que este archivo es HTML5 (la versión moderna de HTML) -->
+<html lang="es">
+<!-- Abre el documento. lang="es" indica que el idioma es español (ayuda a buscadores y lectores de pantalla) -->
+
+<head>
+    <!-- HEAD: información "invisible" de la página; no se ve en pantalla, pero el navegador la necesita -->
+
+    <meta charset="UTF-8">
+    <!-- Permite mostrar tildes y la ñ correctamente -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CLAVE PARA CELULARES: hace que la página se ajuste al ancho de la pantalla del móvil -->
+
+    <title>Aura Belleza | Cuidado de la piel y maquillaje</title>
+    <!-- Texto que aparece en la pestaña del navegador. Cámbialo por el nombre de tu emprendimiento -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Estas dos líneas aceleran la conexión con Google Fonts (de donde sacamos las tipografías) -->
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Descarga dos tipos de letra: Fraunces (títulos, elegante) y DM Sans (textos, fácil de leer). Requiere internet -->
+
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- CONECTA el HTML con el CSS: busca el archivo styles.css dentro de la carpeta css -->
+</head>
+
+<body>
+    <!-- BODY: todo lo que se ve en la página -->
+
+    <!-- ==================== 1. ENCABEZADO Y MENÚ ==================== -->
+    <header class="encabezado">
+        <!-- <header> = parte superior de la página. class="encabezado" es el "nombre" que usa el CSS para darle estilo -->
+
+        <a href="#inicio" class="logo">
+            <!-- El logo también es un enlace: al hacer clic lleva al inicio -->
+            <img src="img/logo.svg" alt="Logo de Aura Belleza">
+            <!-- Imagen del logo guardada en la carpeta img. El alt describe la imagen (accesibilidad y por si no carga) -->
+            <span>Aura Belleza</span>
+            <!-- Nombre del emprendimiento escrito junto al logo -->
+        </a>
+
+        <nav class="menu">
+            <!-- <nav> = menú de navegación -->
+            <a href="#inicio">Inicio</a>
+            <!-- href="#inicio" busca en la página un elemento con id="inicio" y baja/sube hasta allí -->
+            <a href="#nosotros">Nosotros</a>
+            <a href="#productos">Productos</a>
+            <a href="#promociones">Promociones</a>
+            <a href="#calculadora">Calculadora</a>
+            <a href="#contacto">Contacto</a>
+            <!-- Cada enlace lleva a la sección cuyo id coincide con su nombre -->
+        </nav>
+    </header>
+
+    <main>
+        <!-- <main> = contenido principal de la página (todo lo que está entre el encabezado y el pie) -->
+
+        <!-- ==================== 2. PORTADA PRINCIPAL ==================== -->
+        <section id="inicio" class="portada">
+            <!-- <section> = bloque temático. id="inicio" es el "destino" del enlace del menú -->
+
+            <div class="portada-texto">
+                <!-- Caja para el texto de la portada (a la izquierda en computador) -->
+                <h1>Tu piel, tu ritual, tu brillo.</h1>
+                <!-- h1 = título más importante de la página (solo debe haber uno). Es la frase llamativa -->
+                <p>Cosmética y maquillaje seleccionados con cariño para que te sientas bien en tu piel todos los días.</p>
+                <!-- Párrafo de bienvenida -->
+                <a href="#productos" class="boton">Ver productos</a>
+                <!-- Botón (en realidad un enlace con estilo de botón) que invita a conocer los productos -->
+            </div>
+
+            <div class="portada-imagen">
+                <!-- Caja para la imagen principal (a la derecha). El CSS le da forma de arco -->
+                <img src="img/hero.svg" alt="Productos de belleza Aura">
+                <!-- Imagen principal. Cámbiala por una foto tuya de buena calidad, ej: img/portada.jpg -->
+            </div>
+        </section>
+
+        <!-- ==================== 3. SOBRE NOSOTROS ==================== -->
+        <section id="nosotros" class="sobre-nosotros">
+            <div class="nosotros-imagen">
+                <img src="img/negocio.svg" alt="Nuestro emprendimiento">
+                <!-- Fotografía relacionada con el negocio -->
+            </div>
+
+            <div class="nosotros-contenido">
+                <h2>Belleza que empieza por cuidarte</h2>
+                <!-- h2 = título de sección (segundo nivel) -->
+                <p>Aura nació en Barranquilla de una idea sencilla: que el cuidado personal sea accesible, sin complicaciones y con productos en los que se pueda confiar.</p>
+                <!-- Historia breve del emprendimiento. ¡Reemplázala por la tuya! -->
+                <p>Elegimos fórmulas suaves, empaques bonitos y precios justos. Además, te asesoramos de forma personalizada para que encuentres lo que va con tu tipo de piel.</p>
+                <!-- Qué ofrece y qué lo diferencia -->
+                <a href="#productos" class="boton">Conoce nuestros productos</a>
+            </div>
+        </section>
+
+        <!-- ==================== 4. CATÁLOGO DE PRODUCTOS ==================== -->
+        <section id="productos" class="catalogo">
+            <h2>Nuestros productos</h2>
+            <p class="catalogo-intro">Elige tu favorito y consulta por WhatsApp.</p>
+            <!-- Frase introductoria. class="catalogo-intro" permite darle un estilo propio -->
+
+            <div class="catalogo-rejilla">
+                <!-- Contenedor que el CSS convierte en una cuadrícula de tarjetas -->
+
+                <!-- TARJETA 1 -->
+                <article class="tarjeta">
+                    <!-- <article> = una pieza de contenido independiente (aquí, un producto) -->
+                    <img src="img/producto1.svg" alt="Sérum facial hidratante">
+                    <!-- Imagen del producto -->
+                    <div class="tarjeta-info">
+                        <h3>Sérum facial hidratante</h3>
+                        <!-- h3 = título de tercer nivel: nombre del producto -->
+                        <p>Con ácido hialurónico. Deja la piel suave y luminosa.</p>
+                        <!-- Descripción -->
+                        <p class="precio">$45.000</p>
+                        <!-- Precio (class="precio" para resaltarlo con CSS) -->
+                        <a href="#calculadora" class="boton-pequeno">Consultar</a>
+                        <!-- Enlace para consultar el producto: lleva a la calculadora -->
+                    </div>
+                </article>
+
+                <!-- TARJETA 2 -->
+                <article class="tarjeta">
+                    <img src="img/producto2.svg" alt="Labial mate">
+                    <div class="tarjeta-info">
+                        <h3>Labial mate larga duración</h3>
+                        <p>Color intenso que dura todo el día, sin resecar.</p>
+                        <p class="precio">$28.000</p>
+                        <a href="#calculadora" class="boton-pequeno">Consultar</a>
+                    </div>
+                </article>
+
+                <!-- TARJETA 3 -->
+                <article class="tarjeta">
+                    <img src="img/producto3.svg" alt="Paleta de sombras">
+                    <div class="tarjeta-info">
+                        <h3>Paleta de sombras</h3>
+                        <p>Tonos cálidos para el día y la noche, fáciles de combinar.</p>
+                        <p class="precio">$65.000</p>
+                        <a href="#calculadora" class="boton-pequeno">Consultar</a>
+                    </div>
+                </article>
+                <!-- Mínimo 3 tarjetas, como pide la guía. Para agregar más, copia y pega una <article> completa -->
+            </div>
+        </section>
+
+        <!-- ==================== 5. PROMOCIONES ==================== -->
+        <section id="promociones" class="promociones">
+            <h2>Promociones para ti</h2>
+            <p>Aprovecha estos beneficios por tiempo limitado.</p>
+
+            <div class="promociones-contenedor">
+                <!-- PROMOCIÓN 1 -->
+                <article class="tarjeta-promocion">
+                    <img src="img/promo1.svg" alt="Promoción sérum">
+                    <div class="contenido-promocion">
+                        <span class="descuento">20% de descuento</span>
+                        <!-- Etiqueta con el mensaje promocional -->
+                        <h3>Sérum hidratante</h3>
+                        <p>Este mes, tu rutina de skincare más barata. Aplica en compras de 2 unidades o más.</p>
+                        <a href="#calculadora" class="boton-promo">Calcular mi pedido</a>
+                    </div>
+                </article>
+
+                <!-- PROMOCIÓN 2 -->
+                <article class="tarjeta-promocion">
+                    <img src="img/promo2.svg" alt="Producto destacado">
+                    <div class="contenido-promocion">
+                        <span class="descuento">Novedad</span>
+                        <h3>Paleta de sombras</h3>
+                        <p>Llegó nuestro producto más pedido. Pídelo antes de que se agote.</p>
+                        <a href="#productos" class="boton-promo">Ver producto</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==================== 6. CALCULADORA (solo diseño) ==================== -->
+
+<section id="calculadora" class="seccion-calculadora">
+
+    <div class="calculadora-encabezado">
+        <h2>Calcula el valor de tu pedido</h2>
+        <p>Ingresa los datos para conocer el valor estimado.</p>
+    </div>
+
+    <div class="calculadora-contenedor">
+
+        <!-- FORMULARIO -->
+        <form class="calculadora-formulario"
+              action="/api/calculadora"
+              method="POST">
+
+            <h3>Información del pedido</h3>
+
+            <label for="producto">Selecciona un producto:</label>
+
+            <select id="producto" name="producto" required>
+                <option value="">Selecciona una opción</option>
+                <option value="45000">Sérum facial hidratante</option>
+                <option value="28000">Labial mate larga duración</option>
+                <option value="65000">Paleta de sombras</option>
+            </select>
+
+            <label for="cantidad">Cantidad:</label>
+
+            <input
+                type="number"
+                id="cantidad"
+                name="cantidad"
+                placeholder="Ingresa la cantidad"
+                min="1"
+                required
+            >
+
+            <label for="descuento">Código de descuento:</label>
+
+            <input
+                type="text"
+                id="descuento"
+                name="descuento"
+                placeholder="Si tienes un código, escríbelo"
+            >
+
+            <button type="submit" class="boton-calcular">
+                Calcular pedido
+            </button>
+
+        </form>
+
+        <!-- RESULTADO -->
+        <div class="resultado-calculadora">
+
+            <h3>Resumen de tu pedido</h3>
+
+            <p>Producto seleccionado:</p>
+
+            <strong>El resultado aparecerá después de calcular.</strong>
+
+            <hr>
+
+            <p>Valor total:</p>
+
+            <span class="valor-total">$0</span>
+
+            <p class="mensaje-calculadora">
+                Aquí aparecerá el resultado de tu compra.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- ==================== 7. CONTACTO ==================== -->
+        <section id="contacto" class="seccion-contacto">
+            <div class="contacto-encabezado">
+                <h2>¡Hablemos!</h2>
+                <p>¿Tienes alguna pregunta? Nos encantará atenderte.</p>
+            </div>
+
+            <div class="contacto-contenedor">
+
+                <!-- Datos de contacto -->
+                <div class="contacto-informacion">
+                    <h3>Información de contacto</h3>
+
+                    <div class="dato-contacto">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/573000000000" target="_blank" rel="noopener">300 000 0000</a></p>
+                        <!-- wa.me/57 + número = abre WhatsApp con tu número (57 es el código de Colombia). target="_blank" lo abre en otra pestaña -->
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h4>Correo electrónico</h4>
+                        <p><a href="mailto:micorreo@email.com">micorreo@email.com</a></p>
+                        <!-- mailto: abre el programa de correo del cliente -->
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h4>Instagram</h4>
+                        <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">@aurabelleza</a></p>
+                        <!-- Cambia el enlace por el de tu perfil real -->
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h4>Ubicación</h4>
+                        <p>Barranquilla, Colombia</p>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h4>Horario de atención</h4>
+                        <p>Lunes a sábado: 8:00 a. m. - 6:00 p. m.</p>
+                    </div>
+                </div>
+
+                <!-- Formulario de contacto -->
+                <div class="contacto-formulario">
+                    <h3>Envíanos un mensaje</h3>
+                    <form>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" placeholder="Escribe tu correo">
+                        <!-- type="email" valida que el texto tenga formato de correo -->
+
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" rows="5" placeholder="¿En qué podemos ayudarte?"></textarea>
+                        <!-- <textarea> = caja de texto grande. rows="5" = alto de 5 renglones -->
+
+                        <button type="button" class="boton-contacto">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== 8. PIE DE PÁGINA ==================== -->
+    <footer class="pie">
+        <!-- <footer> = parte final de la página -->
+        <p class="pie-nombre">Aura Belleza</p>
+        <p>&copy; 2026 Aura Belleza. Todos los derechos reservados.</p>
+        <!-- &copy; es el símbolo © -->
+        <p>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+            <!-- Enlaces a redes sociales: reemplázalos por los tuyos -->
+        </p>
+    </footer>
+
+</body>
+</html>

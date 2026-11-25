@@ -1,0 +1,463 @@
+/* =====================================================
+   1. IDENTIDAD VISUAL (colores)
+   ===================================================== */
+:root {                          /* :root = "la raíz": aquí guardamos variables que se usan en toda la página */
+    --ciruela: #4A2040;          /* color principal: títulos, menú, botones */
+    --rosa-intenso: #B5546F;     /* color secundario: acentos y hover */
+    --rosa-polvo: #F3D9DF;       /* fondo suave de algunas secciones */
+    --champan: #C9A25E;          /* dorado: detalles y precios */
+    --fondo: #FCF5F6;           /* fondo general de la página */
+    --texto: #2B1527;            /* color del texto normal (casi negro con tono ciruela) */
+    --blanco: #FFFFFF;           /* blanco para tarjetas */
+}
+/* Para cambiar la identidad de tu marca, solo modificas estos valores y toda la página cambia */
+
+/* =====================================================
+   2. TIPOGRAFÍA Y BASE
+   ===================================================== */
+* {                              /* * = aplica a TODOS los elementos */
+    margin: 0;                   /* quita los espacios externos que trae el navegador por defecto */
+    padding: 0;                  /* quita los espacios internos por defecto */
+    box-sizing: border-box;      /* el ancho incluye el borde y el relleno: facilita calcular tamaños */
+}
+
+html {
+    scroll-behavior: smooth;     /* al tocar el menú, la página se desliza suave en vez de saltar */
+    scroll-padding-top: 90px;    /* deja espacio arriba para que el menú fijo no tape el título de la sección */
+}
+
+body {
+    font-family: 'DM Sans', Arial, sans-serif;  /* letra de los textos; si no carga, usa Arial */
+    background-color: var(--fondo);             /* var(...) usa una variable definida arriba */
+    color: var(--texto);                        /* color del texto */
+    line-height: 1.6;                           /* espacio entre renglones, más fácil de leer */
+    font-size: 17px;                            /* tamaño base del texto */
+}
+
+h1, h2, h3 {                                    /* los títulos usan la otra tipografía */
+    font-family: 'Fraunces', Georgia, serif;    /* letra elegante para títulos */
+    color: var(--ciruela);                      /* títulos en color principal */
+    line-height: 1.15;                          /* títulos más compactos */
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }   /* clamp(mínimo, ideal, máximo): el título se adapta al tamaño de pantalla */
+h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); margin-bottom: 12px; }  /* títulos de sección */
+h3 { font-size: 1.25rem; }                      /* subtítulos */
+
+img {
+    max-width: 100%;             /* ninguna imagen se sale de su caja */
+    display: block;              /* quita un pequeño espacio que dejan las imágenes por defecto */
+}
+
+a { color: inherit; }            /* los enlaces toman el color del texto que los rodea */
+
+section { padding: 80px 8%; }    /* todas las secciones: 80px arriba/abajo y 8% a los lados */
+
+/* Borde visible cuando alguien navega con el teclado (accesibilidad) */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--champan);
+    outline-offset: 3px;
+}
+
+/* =====================================================
+   3. ENCABEZADO Y MENÚ
+   ===================================================== */
+.encabezado {
+    position: sticky;            /* el menú se queda pegado arriba al bajar por la página */
+    top: 0;                      /* pegado al borde superior */
+    z-index: 10;                 /* lo pone "encima" de todo lo demás */
+    display: flex;               /* flex = pone los elementos hijos en fila */
+    justify-content: space-between; /* logo a la izquierda, menú a la derecha */
+    align-items: center;         /* centra verticalmente */
+    padding: 12px 8%;            /* espacio interno */
+    background-color: var(--ciruela); /* fondo del menú */
+}
+
+.logo {
+    display: flex;               /* logo e nombre en fila */
+    align-items: center;         /* alineados al centro */
+    gap: 10px;                   /* espacio entre logo y nombre */
+    text-decoration: none;       /* quita el subrayado del enlace */
+    color: var(--blanco);        /* texto blanco */
+    font-family: 'Fraunces', Georgia, serif; /* misma letra de títulos */
+    font-size: 1.4rem;           /* tamaño del nombre */
+}
+
+.logo img { width: 44px; height: 44px; }   /* tamaño del logo */
+
+.menu {
+    display: flex;               /* enlaces en fila */
+    gap: 26px;                   /* separación entre enlaces */
+}
+
+.menu a {
+    color: var(--rosa-polvo);    /* enlaces rosa claro */
+    text-decoration: none;       /* sin subrayado */
+    font-weight: 500;            /* grosor medio */
+    padding: 4px 0;              /* espacio vertical pequeño */
+    border-bottom: 2px solid transparent;  /* línea invisible que aparecerá en hover */
+    transition: color 0.25s, border-color 0.25s; /* cambio suave de 0.25 segundos */
+}
+
+.menu a:hover {                  /* :hover = cuando el cursor pasa por encima */
+    color: var(--blanco);        /* se vuelve blanco */
+    border-bottom-color: var(--champan); /* aparece una línea dorada */
+}
+
+/* =====================================================
+   4. PORTADA
+   ===================================================== */
+.portada {
+    display: grid;               /* grid = cuadrícula */
+    grid-template-columns: 1.1fr 0.9fr; /* dos columnas: texto un poco más ancho que la imagen */
+    align-items: center;         /* centrado vertical */
+    gap: 50px;                   /* espacio entre columnas */
+    min-height: 88vh;            /* alto mínimo: 88% de la pantalla */
+    background: linear-gradient(135deg, var(--fondo) 55%, var(--rosa-polvo) 100%); /* degradado diagonal suave */
+}
+
+.portada-texto p {
+    max-width: 46ch;             /* limita el ancho del párrafo a ~46 caracteres: se lee mejor */
+    margin: 22px 0 30px;         /* arriba 22px, lados 0, abajo 30px */
+    font-size: 1.15rem;          /* un poco más grande */
+}
+
+.portada-imagen img {
+    width: 100%;                 /* ocupa todo el ancho de su columna */
+    max-width: 420px;            /* pero no pasa de 420px */
+    margin: 0 auto;              /* centrada */
+    aspect-ratio: 5 / 6;         /* proporción vertical */
+    object-fit: cover;           /* la imagen llena la caja sin deformarse */
+    border-radius: 999px 999px 0 0; /* esquinas de arriba muy redondas = forma de ARCO (el sello visual de esta página) */
+    box-shadow: 14px 14px 0 var(--champan); /* sombra dorada desplazada, sin difuminar */
+}
+
+/* Botones principales */
+.boton {
+    display: inline-block;       /* permite darle relleno a un enlace */
+    padding: 14px 30px;          /* tamaño del botón */
+    background-color: var(--rosa-intenso); /* color de fondo */
+    color: var(--blanco);        /* texto blanco */
+    text-decoration: none;       /* sin subrayado */
+    font-weight: 700;            /* negrita */
+    border-radius: 40px;         /* bordes redondeados tipo píldora */
+    transition: transform 0.2s, background-color 0.2s; /* animación suave */
+}
+
+.boton:hover {
+    background-color: var(--ciruela); /* cambia de color */
+    transform: translateY(-3px);      /* sube 3px: efecto de "levantarse" */
+}
+
+/* =====================================================
+   5. SECCIONES: SOBRE NOSOTROS
+   ===================================================== */
+.sobre-nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* dos columnas iguales */
+    gap: 60px;
+    align-items: center;
+}
+
+.nosotros-imagen img {
+    width: 100%;
+    border-radius: 200px 20px 200px 20px; /* esquinas opuestas redondeadas: forma de hoja/pétalo */
+    aspect-ratio: 7 / 5;
+    object-fit: cover;
+}
+
+.nosotros-contenido p { margin-bottom: 16px; max-width: 52ch; }  /* espacio entre párrafos y ancho máximo */
+.nosotros-contenido .boton { margin-top: 10px; }                 /* separa el botón del texto */
+
+/* =====================================================
+   6. CATÁLOGO
+   ===================================================== */
+.catalogo {
+    background-color: var(--blanco); /* fondo blanco para separarlo de la sección anterior */
+    text-align: center;              /* títulos centrados */
+}
+
+.catalogo-intro { margin-bottom: 40px; }
+
+.catalogo-rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* tantas columnas como quepan, cada una de mínimo 250px: se adapta solo al celular */
+    gap: 30px;
+    text-align: left;                /* el texto de las tarjetas vuelve a la izquierda */
+}
+
+.tarjeta {
+    background-color: var(--fondo);
+    border: 2px solid var(--rosa-polvo); /* borde suave */
+    border-radius: 18px;
+    overflow: hidden;                /* recorta la imagen para que respete las esquinas redondeadas */
+    transition: transform 0.25s, border-color 0.25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);     /* la tarjeta sube */
+    border-color: var(--champan);    /* el borde se vuelve dorado */
+}
+
+.tarjeta img {
+    width: 100%;
+    aspect-ratio: 1 / 1;             /* imagen cuadrada */
+    object-fit: cover;
+}
+
+.tarjeta-info { padding: 20px 22px 26px; }   /* espacio interno del texto de la tarjeta */
+.tarjeta-info p { margin: 8px 0; }
+
+.precio {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--rosa-intenso);
+}
+
+.boton-pequeno {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 9px 20px;
+    border: 2px solid var(--ciruela);    /* botón con contorno */
+    color: var(--ciruela);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.boton-pequeno:hover {
+    background-color: var(--ciruela);    /* se rellena de color */
+    color: var(--blanco);
+}
+
+/* =====================================================
+   7. PROMOCIONES (se diferencia con fondo oscuro)
+   ===================================================== */
+.promociones {
+    background-color: var(--ciruela);    /* fondo oscuro: destaca frente al resto */
+    color: var(--rosa-polvo);
+}
+
+.promociones h2 { color: var(--blanco); }  /* el título se ve en blanco sobre fondo oscuro */
+.promociones > p { margin-bottom: 40px; }  /* > = solo el párrafo que es hijo directo de la sección */
+
+.promociones-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-promocion {
+    display: flex;                       /* imagen y texto en fila */
+    background-color: rgba(255, 255, 255, 0.08); /* blanco casi transparente */
+    border: 1px solid rgba(243, 217, 223, 0.3);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.25s;
+}
+
+.tarjeta-promocion:hover { transform: scale(1.02); }  /* crece un poquito */
+
+.tarjeta-promocion img {
+    width: 40%;                          /* la imagen ocupa 40% de la tarjeta */
+    object-fit: cover;
+}
+
+.contenido-promocion { padding: 26px; }
+.contenido-promocion h3 { color: var(--blanco); margin: 10px 0; }
+
+.descuento {
+    display: inline-block;
+    padding: 4px 14px;
+    background-color: var(--champan);    /* etiqueta dorada */
+    color: var(--ciruela);
+    font-weight: 700;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.boton-promo {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 22px;
+    background-color: var(--rosa-polvo);
+    color: var(--ciruela);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: background-color 0.2s;
+}
+
+.boton-promo:hover { background-color: var(--champan); }
+
+/* =====================================================
+   8. CALCULADORA
+   ===================================================== */
+.calculadora-encabezado { text-align: center; margin-bottom: 40px; }
+
+.calculadora-contenedor {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;  /* formulario más ancho que el resultado */
+    gap: 30px;
+    max-width: 960px;
+    margin: 0 auto;                      /* centra todo el bloque */
+}
+
+.calculadora-formulario, .resultado-calculadora, .contacto-informacion, .contacto-formulario {
+    background-color: var(--blanco);     /* cajas blancas con bordes redondeados */
+    padding: 30px;
+    border-radius: 18px;
+    border: 2px solid var(--rosa-polvo);
+}
+
+.calculadora-formulario h3, .resultado-calculadora h3,
+.contacto-informacion h3, .contacto-formulario h3 { margin-bottom: 18px; }
+
+label {
+    display: block;                      /* cada etiqueta en su propio renglón */
+    margin: 14px 0 6px;
+    font-weight: 700;
+    color: var(--ciruela);
+}
+
+input, select, textarea {                /* campos del formulario */
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--rosa-polvo);
+    border-radius: 10px;
+    font-family: inherit;                /* usa la misma letra de la página */
+    font-size: 1rem;
+    background-color: var(--fondo);
+}
+
+input:focus, select:focus, textarea:focus {  /* :focus = cuando el campo está seleccionado */
+    border-color: var(--rosa-intenso);
+}
+
+.boton-calcular, .boton-contacto {
+    margin-top: 22px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: var(--rosa-intenso);
+    color: var(--blanco);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;                     /* cursor de "manito" */
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.boton-calcular:hover, .boton-contacto:hover {
+    background-color: var(--ciruela);
+    transform: translateY(-3px);
+}
+
+.resultado-calculadora {
+    background-color: var(--rosa-polvo);  /* el resultado tiene fondo rosa para llamar la atención */
+    display: flex;
+    flex-direction: column;               /* elementos uno debajo de otro */
+    justify-content: center;
+}
+
+.resultado-calculadora hr { margin: 18px 0; border: 0; border-top: 2px dashed var(--rosa-intenso); }  /* línea punteada */
+
+.valor-total {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--ciruela);
+}
+
+.mensaje-calculadora { margin-top: 10px; font-size: 0.95rem; }
+
+/* =====================================================
+   9. CONTACTO
+   ===================================================== */
+.seccion-contacto { background-color: var(--blanco); }
+.contacto-encabezado { text-align: center; margin-bottom: 40px; }
+
+.contacto-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.contacto-informacion, .contacto-formulario { background-color: var(--fondo); }
+
+.dato-contacto { margin-bottom: 16px; }
+.dato-contacto h4 { color: var(--rosa-intenso); }
+
+.dato-contacto a {
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid var(--champan);   /* subrayado dorado */
+}
+
+.dato-contacto a:hover { color: var(--rosa-intenso); }
+
+/* =====================================================
+   10. PIE DE PÁGINA
+   ===================================================== */
+.pie {
+    background-color: var(--ciruela);
+    color: var(--rosa-polvo);
+    text-align: center;
+    padding: 40px 8%;
+}
+
+.pie p { margin: 6px 0; }
+
+.pie-nombre {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.6rem;
+    color: var(--blanco);
+}
+
+.pie a {
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.pie a:hover { color: var(--champan); }
+
+/* =====================================================
+   11. VERSIÓN PARA CELULARES (responsive)
+   ===================================================== */
+@media (max-width: 800px) {          /* todo lo de adentro SOLO se aplica en pantallas de hasta 800px de ancho */
+
+    section { padding: 60px 6%; }    /* menos espacio lateral */
+
+    .encabezado {
+        flex-direction: column;      /* logo arriba, menú abajo */
+        gap: 8px;
+    }
+
+    .menu {
+        flex-wrap: wrap;             /* si no caben, pasan al siguiente renglón */
+        justify-content: center;
+        gap: 6px 16px;
+        font-size: 0.95rem;
+    }
+
+    .portada, .sobre-nosotros, .calculadora-contenedor, .contacto-contenedor {
+        grid-template-columns: 1fr;  /* de dos columnas a UNA sola (una debajo de otra) */
+    }
+
+    .portada { min-height: auto; padding-top: 40px; }
+    .portada-imagen img { max-width: 300px; }   /* imagen más pequeña */
+
+    .tarjeta-promocion { flex-direction: column; }  /* en promociones, imagen arriba y texto abajo */
+    .tarjeta-promocion img { width: 100%; height: 200px; }
+}
+
+/* Respeta a las personas que desactivan las animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+}
